@@ -1,4 +1,4 @@
-package com.javaboot.tdd;
+package com.javaboot.eje3;
 
 import org.junit.Test;
 
