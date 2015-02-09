@@ -1,24 +1,29 @@
 package com.javaboot.rest;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 
-@Path("/user/service")
+@Path("/user")
 public class UserService {
-	@PUT
-	@Path("/create")
-	public void createUser(){
-		System.out.println("creando usuario");
+	
+	@GET	
+	@Path("/login/{param}")
+	public String login(@PathParam("param")String user,String pass){
+		return "Welcome "+user;
 	}
 	@GET
-	public void getUser(){
-		System.out.println("get usuario");
+	@Path("/create")
+	public void createUser(){
+		System.out.println("usuario creado");
 	}
 	@POST
+	@Path("/update")
 	public void updateUser(){
 		System.out.println("update usuario");
 	}
 	@DELETE
+	@Path("/delete")
 	public void deleteUser(){
 		System.out.println("delete usuario");
 	}
