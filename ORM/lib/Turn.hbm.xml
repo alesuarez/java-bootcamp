@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/02/2015 10:46:17 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Turn" table="turn" catalog="higth_school">
+        <composite-id name="id" class="TurnId">
+            <key-property name="idTurn" type="int">
+                <column name="idTurn" />
+            </key-property>
+            <key-property name="courseIdCourse" type="int">
+                <column name="Course_idCourse" />
+            </key-property>
+            <key-property name="courseTeacherIdTeacher" type="int">
+                <column name="Course_Teacher_idTeacher" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="course" class="Course" update="false" insert="false" fetch="select">
+            <column name="Course_idCourse" not-null="true" />
+            <column name="Course_Teacher_idTeacher" not-null="true" />
+        </many-to-one>
+        <property name="begin" type="timestamp">
+            <column name="begin" length="19" />
+        </property>
+        <property name="end" type="timestamp">
+            <column name="end" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

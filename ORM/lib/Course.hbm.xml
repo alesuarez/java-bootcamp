@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/02/2015 10:46:17 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Course" table="course" catalog="higth_school">
+        <composite-id name="id" class="CourseId">
+            <key-property name="idCourse" type="int">
+                <column name="idCourse" />
+            </key-property>
+            <key-property name="teacherIdTeacher" type="int">
+                <column name="Teacher_idTeacher" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="teacher" class="Teacher" update="false" insert="false" fetch="select">
+            <column name="Teacher_idTeacher" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="hoursByWeek" type="java.lang.Integer">
+            <column name="hoursByWeek" />
+        </property>
+        <set name="turns" table="turn" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Course_idCourse" not-null="true" />
+                <column name="Course_Teacher_idTeacher" not-null="true" />
+            </key>
+            <one-to-many class="Turn" />
+        </set>
+    </class>
+</hibernate-mapping>
