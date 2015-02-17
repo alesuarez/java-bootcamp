@@ -24,6 +24,7 @@ public class Category {
 	@Column(name = "name")
 	String name;
 	
+
 	@OneToMany(mappedBy="category")
 	private List<Line> lineList;
 	
