@@ -20,7 +20,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "idProduct")
-	int idProduct;
+	long idProduct;
 	
 	@NotNull
 	@Column(name = "name")
@@ -28,7 +28,7 @@ public class Product {
 	
 	@NotNull
 	@Column(name = "price")
-	double price;
+	int price;
 	
 	@OneToMany(mappedBy="product")
 	private List<Line> lineList;
@@ -38,7 +38,14 @@ public class Product {
 	private Category category;
 	
 	public Product(){}
-	public int getIdProduct() {
+	
+	public Product(String name, int price) {
+		super();
+		this.name = name;
+		this.price = price;
+	}
+
+	public long getIdProduct() {
 		return idProduct;
 	}
 	public void setIdProduct(int idProduct) {
@@ -50,12 +57,20 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+	public void setCategory(Category category){
+		this.category=category;
+	}
+	public long getIdCategory(){
+		return this.category.getIdCategory();
+	}
+	public String getNameCategory(){
+		return this.category.getName();
+	}
 	
 }

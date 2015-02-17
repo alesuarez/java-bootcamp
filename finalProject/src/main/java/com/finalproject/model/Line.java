@@ -15,11 +15,9 @@ public class Line {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "idLine")
-	int idLine;
+	long idLine;
 	
-	@ManyToOne
-	@JoinColumn(name="idPay")
-	private Pay pay;
+	
 	
 	@ManyToOne
 	@JoinColumn(name="idUser")
@@ -36,6 +34,50 @@ public class Line {
 	@ManyToOne
 	@JoinColumn(name="idCategory")
 	private Category category;
+
+	
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Shop getShop() {
+		return shop;
+	}
+
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Line(User user, Shop shop, Product product,
+			Category category) {
+		super();
+		
+		this.user = user;
+		this.shop = shop;
+		this.product = product;
+		this.category = category;
+	}
 	
 	
 }

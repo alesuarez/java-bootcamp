@@ -19,7 +19,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "idUser")
-	int idUser;
+	long idUser;
 	
 	@NotNull
 	@Column(name = "name")
@@ -45,7 +45,16 @@ public class User {
 	private List<Line> lineList;
 	
 	User(){}
-	public int getIdUser() {
+	
+	public User(String name, String lastName, String email, String pass) {
+		super();
+		this.name = name;
+		this.lastName = lastName;
+		this.email = email;
+		this.pass = pass;
+	}
+
+	public long getIdUser() {
 		return idUser;
 	}
 	public void setIdUser(int idUser) {

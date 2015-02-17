@@ -22,7 +22,7 @@ public class Shop {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "idShop")
-	int idShop;
+	long idShop;
 	
 	@NotNull
 	@Column(name = "hourDay")
@@ -32,9 +32,9 @@ public class Shop {
 	@Column(name = "state")
 	char state;
 	
-	@ManyToOne
-	@JoinColumn(name="idPay")
-	private Pay pay;
+	@NotNull
+	@Column(name = "pay")
+	String pay;
 	
 	@ManyToOne
 	@JoinColumn(name="idUser")
@@ -44,7 +44,19 @@ public class Shop {
 	private List<Line> lineList;
 	
 	public Shop(){}
-	public int getIdShop() {
+	
+	
+	public Shop(String hourDay, char state, User user,String pay) {
+		super();
+		this.hourDay = hourDay;
+		this.state = state;
+	
+		this.user = user;
+		this.pay=pay;
+	}
+
+
+	public long getIdShop() {
 		return idShop;
 	}
 	public void setIdShop(int idShop) {

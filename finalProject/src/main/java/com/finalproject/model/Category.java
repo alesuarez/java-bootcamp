@@ -18,7 +18,7 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "idCategory")
-	int idCategory;
+	long idCategory;
 	
 	@NotNull
 	@Column(name = "name")
@@ -32,10 +32,18 @@ public class Category {
 	private List<Product> Product;
 	
 	public Category(){}
-	public int getIdCategory() {
+	
+	
+	public Category(String name) {
+		super();
+		this.name = name;
+	}
+
+
+	public long getIdCategory() {
 		return idCategory;
 	}
-	public void setIdCategory(int idCategory) {
+	public void setIdCategory(long idCategory) {
 		this.idCategory = idCategory;
 	}
 	public String getName() {
