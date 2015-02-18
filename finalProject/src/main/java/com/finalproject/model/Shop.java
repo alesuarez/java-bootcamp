@@ -74,4 +74,7 @@ public class Shop {
 	public void setState(char state) {
 		this.state = state;
 	}
+	public void setPay(String pay){
+		this.pay=pay;
+	}
 }

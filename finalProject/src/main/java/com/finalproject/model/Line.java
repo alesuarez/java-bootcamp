@@ -16,9 +16,7 @@ public class Line {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "idLine")
 	long idLine;
-	
-	
-	
+		
 	@ManyToOne
 	@JoinColumn(name="idUser")
 	private User user;
@@ -68,7 +66,12 @@ public class Line {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
+	public long getIdCategory(){
+		return this.category.getIdCategory();
+	}
+	public long getIdShop(){
+		return this.shop.getIdShop();
+	}
 	public Line(User user, Shop shop, Product product,
 			Category category) {
 		super();
@@ -78,6 +81,7 @@ public class Line {
 		this.product = product;
 		this.category = category;
 	}
+	public Line(){}
 	
 	
 }

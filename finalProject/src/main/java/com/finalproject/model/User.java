@@ -44,7 +44,7 @@ public class User {
 	@OneToMany(mappedBy="user")
 	private List<Line> lineList;
 	
-	User(){}
+	public User(){}
 	
 	public User(String name, String lastName, String email, String pass) {
 		super();

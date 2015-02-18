@@ -1,31 +1,12 @@
 package com.finalproject.web;
 
+import java.util.ArrayList;
 
 
-
-
-
-
-
-
-import java.util.List;
-
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-
-
-
-
-
-
-
-
-
 
 import com.finalproject.dao.*;
 import com.finalproject.model.*;
@@ -168,17 +149,118 @@ public class finalProjectController {
 		if (user.getPass().equals(pass)){
 		return "success!";
 		}
-		
-		
 		return "fail";		
 	}
-	@RequestMapping("/list")
 	
-	public String getCategory() {
-		
-		return "hola";
+	@RequestMapping("/filterCategory")
+	public ArrayList<Product> filterCategor(String name){
+		ArrayList<Product> product=(ArrayList<Product>)ProductDAO.findAll();
+		ArrayList<Product> aux=new ArrayList<Product>();
+		for(int i=0; i<product.size();i++){
+			Product tmp= (Product)product.get(i);
+			if(tmp.getNameCategory().equals(name)){
+				aux.add(tmp);
+			}
 		}
+		return aux;
 	}
+	
+	@RequestMapping("/filterLine")
+	public ArrayList<Line> filterLine(long idShop){
+		ArrayList<Line> line=(ArrayList<Line>)LineDAO.findAll();
+		ArrayList<Line> aux=new ArrayList<Line>();
+		
+		for(int i=0; i<line.size();i++){
+			Line tmp= (Line)line.get(i);
+			if(tmp.getShop().getIdShop()==idShop){
+				aux.add(tmp);
+			}
+		}
+		return aux;
+	}
+	
+// confirmar compra
+	@RequestMapping("/confirmUser")
+	public String confirmUser(long idShop){
+		try {
+			Shop shop=ShopDAO.findOne(idShop);
+			shop.setState('c');
+			ShopDAO.save(shop);
+			
+		
+	} catch (Exception ex) {
+		return "Error: " + ex.toString();
+	}
+	return "success!";
+	}
+	@RequestMapping("/confirmWebUser")
+	public String confirmWebUser(long idShop){
+		try {
+			Shop shop=ShopDAO.findOne(idShop);
+			shop.setState('p');
+			ShopDAO.save(shop);
+			
+		
+	} catch (Exception ex) {
+		return "Error: " + ex.toString();
+	}
+	return "success!";
+	}
+	@RequestMapping("/disparched")
+	public String disparched(long idShop){
+		try {
+			Shop shop=ShopDAO.findOne(idShop);
+			shop.setState('d');
+			ShopDAO.save(shop);
+			
+		
+	} catch (Exception ex) {
+		return "Error: " + ex.toString();
+	}
+	return "success!";
+	}
+	@RequestMapping("/accepted")
+	public String accepted(long idShop){
+		try {
+			Shop shop=ShopDAO.findOne(idShop);
+			shop.setState('a');
+			ShopDAO.save(shop);
+			
+		
+	} catch (Exception ex) {
+		return "Error: " + ex.toString();
+	}
+	return "success!";
+	}
+	@RequestMapping("/rejected")
+	public String rejected(long idShop){
+		try {
+			Shop shop=ShopDAO.findOne(idShop);
+			shop.setState('r');
+			ShopDAO.save(shop);
+			
+		
+	} catch (Exception ex) {
+		return "Error: " + ex.toString();
+	}
+	return "success!";
+	}
+	
+	@RequestMapping("/pay")
+	public String rejected(long idShop,String pay){
+		try {
+			Shop shop=ShopDAO.findOne(idShop);
+			shop.setPay(pay);
+			ShopDAO.save(shop);
+			
+		
+	} catch (Exception ex) {
+		return "Error: " + ex.toString();
+	}
+	return "success!";
+	}
+	
+}
 		
 	
 
