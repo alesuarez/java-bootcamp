@@ -1,0 +1,69 @@
+creacion de usuario
+http://localhost:8080/createUser?name=Juilo&lastName=Perez&email=juliop@gmail.com&pass=12345
+http://localhost:8080/createUser?name=Mario&lastName=Sanchez&email=marios@gmail.com&pass=1234
+
+creacion de categoria
+http://localhost:8080/createCategory?name=domestico
+http://localhost:8080/createCategory?name=salvaje
+http://localhost:8080/createCategory?name=granja
+
+
+
+creacion de producto
+http://localhost:8080/createProduct?name=gato&price=1000&idCategoria=1
+http://localhost:8080/createProduct?name=perro&price=2000&idCategoria=1
+http://localhost:8080/createProduct?name=vaca&price=1000&idCategoria=3
+http://localhost:8080/createProduct?name=burro&price=1000&idCategoria=3
+http://localhost:8080/createProduct?name=lince&price=1000&idCategoria=2
+http://localhost:8080/createProduct?name=leon&price=1000&idCategoria=2
+
+
+creacion de shop
+http://localhost:8080/createShop?date=11220015&idUser=1
+
+agregar un producto a la linea de compra
+http://localhost:8080/addProduct?idProduct=1&idShop=1&idUser=1
+http://localhost:8080/addProduct?idProduct=2&idShop=1&idUser=1
+http://localhost:8080/addProduct?idProduct=4&idShop=1&idUser=1
+
+
+filtrar por categoria
+http://localhost:8080/filterCategory?name=domestico
+http://localhost:8080/filterCategory?name=salvaje
+
+
+login usuario
+http://localhost:8080/login?email=juliop@gmail.com&pass=12345
+
+
+confirmar el metodo de pago
+http://localhost:8080/pay?idShop=1&pay=cash
+
+
+todos los productos de mi linea
+http://localhost:8080/filterLine?idShop=1
+
+
+usuario confirma la compra
+http://localhost:8080/confirmWebUser?idShop=1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

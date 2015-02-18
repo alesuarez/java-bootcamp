@@ -179,7 +179,12 @@ public class finalProjectController {
 		return aux;
 	}
 	
-// confirmar compra
+// 
+//
+// s->select
+//
+// c-> confirmed ; p->pay ; d->dispatched ; a-> accepted ; r->rejected
+//
 	@RequestMapping("/confirmUser")
 	public String confirmUser(long idShop){
 		try {
@@ -247,7 +252,7 @@ public class finalProjectController {
 	}
 	
 	@RequestMapping("/pay")
-	public String rejected(long idShop,String pay){
+	public String pay(long idShop,String pay){
 		try {
 			Shop shop=ShopDAO.findOne(idShop);
 			shop.setPay(pay);
