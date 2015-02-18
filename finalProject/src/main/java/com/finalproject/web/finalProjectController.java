@@ -145,11 +145,19 @@ public class finalProjectController {
 	
 	@RequestMapping("/login")
 	public String Login(String email,String pass){
-		User user=userDAO.findByEmail(email);
-		if (user.getPass().equals(pass)){
-		return "success!";
+		boolean found=false;
+		try {
+			User user=userDAO.findByEmail(email);
+			if (user==null){return "fail";}
+			if (user.getPass().equals(pass)){
+				found=true;
+			}
+		} catch (Exception ex) {
+			return "Error with the user or password: " + ex.toString();
 		}
-		return "fail";		
+		if(found==true) return "success!";
+		else return "fail";
+			
 	}
 	
 	@RequestMapping("/filterCategory")
