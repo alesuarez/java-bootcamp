@@ -67,11 +67,10 @@ public class finalProjectController {
 	@RequestMapping("/createProduct")
 	public String createProduct(String name,int price,long idCategoria) {
 		try {
-			
-			Category category = CategoryDAO.findOne(idCategoria);
-			Product product = new Product(name,price);
-			product.setCategory(category);
-			ProductDAO.save(product);
+				Category category = CategoryDAO.findOne(idCategoria);
+				Product product = new Product(name,price);
+				product.setCategory(category);
+				ProductDAO.save(product);
 			
 		} catch (Exception ex) {
 			return "Error: " + ex.toString();
